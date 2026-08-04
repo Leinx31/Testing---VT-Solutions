@@ -40,7 +40,7 @@ jobs:
         working-directory: ./backend
         run: |
           npm start &
-          npx wait-on http://localhost:3000 -t 30000
+          npx wait-on tcp:3000 -t 30000
         env:
           PORT: 3000
           MONGODB_URI: mongodb://127.0.0.1:27017/tu_database
