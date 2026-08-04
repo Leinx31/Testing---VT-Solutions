@@ -22,13 +22,16 @@ jobs:
           node-version: '18'
 
       - name: Instalar dependencias
+        working-directory: ./backend
         run: npm install
 
       - name: Ejecutar Pruebas Unitarias
+        working-directory: ./backend
         run: npm run test -- --coverage
         continue-on-error: true
 
       - name: Levantar API Backend
+        working-directory: ./backend
         run: |
           npm start &
           npx wait-on http://localhost:3000 -t 30000
@@ -48,7 +51,7 @@ jobs:
 
       - name: Correr Test Plan de JMeter
         run: |
-          ./apache-jmeter-5.6.3/bin/jmeter -n -t "tests/Flujo Completo de Compra.jmx" -l tests/results.jtl -e -o tests/jmeter_report
+          ./apache-jmeter-5.6.3/bin/jmeter -n -t "tests/FlujoCompletodeCompra.jmx" -l tests/results.jtl -e -o tests/jmeter_report
 
       - name: Análisis Estático SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
