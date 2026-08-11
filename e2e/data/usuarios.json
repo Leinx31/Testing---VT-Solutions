@@ -1,0 +1,10 @@
+{
+  "loginExitoso": {
+    "email": "user@test.com",
+    "password": "user123"
+  },
+  "loginCredencialesIncorrectas": {
+    "email": "user@test.com",
+    "password": "passwordIncorrecta"
+  }
+}

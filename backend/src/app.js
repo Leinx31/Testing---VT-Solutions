@@ -19,6 +19,10 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/external', externalRoutes);
 
+app.get('/', (req, res) => {
+    res.send('VT Solutions API funcionando correctamente');
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'VT Solutions API corriendo' });

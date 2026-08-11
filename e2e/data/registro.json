@@ -1,0 +1,14 @@
+{
+  "registroExitoso": {
+    "nombre": "Usuario Test",
+    "correo": "usuario",
+    "password": "Test123",
+    "confirmPassword": "Test123"
+  },
+  "registroPasswordDiferente": {
+    "nombre": "Usuario Test",
+    "correo": "usuario",
+    "password": "Test123",
+    "confirmPassword": "Test456"
+  }
+}

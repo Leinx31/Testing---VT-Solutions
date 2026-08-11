@@ -65,10 +65,37 @@ const seed = async () => {
   ]);
   console.log('Productos tech creados: 5');
 
-  const salt = await bcrypt.genSalt(10);
-  const admin = await User.create({ name: 'Admin VT', email: 'admin@vtsolutions.com', password: await bcrypt.hash('admin123', salt), role: 'admin' });
-  const user  = await User.create({ name: 'Usuario Test', email: 'user@test.com',         password: await bcrypt.hash('user123',  salt) });
-  console.log('Usuarios creados:', admin.email, user.email);
+const salt = await bcrypt.genSalt(10);
+
+const users = [];
+
+// Administrador
+users.push({
+  name: 'Administrador VT',
+  email: 'admin@vtsolutions.com',
+  password: await bcrypt.hash('admin123', salt),
+  role: 'admin'
+});
+
+// Usuario principal
+users.push({
+  name: 'Usuario Test',
+  email: 'user@test.com',
+  password: await bcrypt.hash('user123', salt)
+});
+
+// Usuarios para pruebas de carga
+// for (let i = 1; i <= 2; i++) {
+//   users.push({
+//     name: `Usuario ${i}`,
+//     email: `user${String(i).padStart(3, '0')}@test.com`,
+//     password: await bcrypt.hash('user123', salt)
+//   });
+// }
+
+await User.insertMany(users);
+
+console.log(`Usuarios creados: ${users.length}`);
 
   await mongoose.disconnect();
   console.log('Seed completado exitosamente');
